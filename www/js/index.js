@@ -1,6 +1,7 @@
 var app = {
     // Application Constructor
     initialize: function() {
+	alert('Yo');
         this.bindEvents();
     },
     // Bind Event Listeners
