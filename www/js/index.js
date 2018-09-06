@@ -1,7 +1,7 @@
 var app = {
     // Application Constructor
     initialize: function() {
-        this.bindEvents();
+	setTimeout(app.bindEvents, 4000);
     },
     // Bind Event Listeners
     //
