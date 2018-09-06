@@ -1,7 +1,7 @@
 var app = {
     // Application Constructor
     initialize: function() {
-	setTimeout(app.bindEvents, 4000);
+        this.bindEvents();
     },
     // Bind Event Listeners
     //
@@ -18,7 +18,7 @@ var app = {
 		pictureSource=navigator.camera.PictureSourceType;
 		destinationType=navigator.camera.DestinationType;
 		//lock app orientation
-		screen.orientation.lock('portrait');
+		//screen.orientation.lock('portrait');
 		//initialise the ui and event handlers
 		init_ui();
 		//start the frontend services
