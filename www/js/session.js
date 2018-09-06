@@ -27,7 +27,6 @@ function init_ui(){
 	document.getElementById('agri_tips_btn').parentElement.addEventListener('click',  with_delay(set_fmg_active, 200), false );
 	document.getElementById('weather_short_button').addEventListener('click', with_delay(set_wtr_active, 200), false );
 	document.getElementById('scan_cam_button').addEventListener('click', with_delay(set_cam_active, 200), false);
-	alert('UI init');
 }
 
 function set_cam_active(){
@@ -121,7 +120,6 @@ function register(){
 				interest_crops: app.session.data.interest_crops};
 		init_home();
 	}
-	alert('registration init');
 }
 
 function init_home(){
@@ -132,7 +130,6 @@ function init_home(){
 	document.getElementById('menu_sidebar_btn').style.display = 'block';
 	document.getElementById('home_page').style.display = 'block';
 	app.session.data.cstate = 2;
-	alert('Home init');
 }
 
 function sendGet(url, data){
@@ -191,6 +188,11 @@ function onBackKey(){
 		}
 		stop_processing();
 	}
+}
+
+function home_not_back(){
+	if( app.session.data.cstate != 2 )
+		onBackKey();
 }
 
 function show_extra_info(){//alert(document.getElementById('extra_info_page').innerHTML);
