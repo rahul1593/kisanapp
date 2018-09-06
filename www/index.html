@@ -22,7 +22,7 @@
 		<button id="menu_sidebar_btn" class="navbar-toggler px-1 mr-0" type="button" data-toggle="collapse" data-target="#sidebar">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-		<img id="home_icon" class="btn btn-dark ml-0 px-0" src="img/home.png" style="position:relative;left:-25pt;height:45px;width:35px" onclick="app.session.set_page_active(null);"/>
+		<img id="home_icon" class="btn btn-dark ml-0 px-0" src="img/home.png" style="position:relative;left:-25pt;height:45px;width:35px" onclick="home_not_back(); app.session.set_page_active(null);"/>
 		<span class="pt-0 large-font px-0 ml-0" style="color:white;font-size:14pt">Kisan Agriculture</span>
 		<a class="navbar-brand py-1 px-0 mr-0" href="#" data-toggle="modal" data-target="#about_app">
 			<img id="app_icon" src="img/icon.png" alt="Logo" style="height:26pt;">
@@ -453,7 +453,7 @@
 				</table>
 			</div>
 			<!-- Page for detailed information -->
-			<div id="extra_info_page" class="container-fluid full_page text-left page" style="display:none;z-index:100">
+			<div id="extra_info_page" class="container-fluid full_page text-left page" style="display:none;z-index:11">
 				<div id="extra_info" class="container-fluid full_page mt-3 px-2 ml-0 mr-0 table-wrapper-scroll-y"></div>
 			</div>
 		</div>
@@ -468,7 +468,7 @@
 	</footer>
 	<script type="text/javascript">
 		app.initialize();
-		//setTimeout(app.onDeviceReady, 6000);
+		//app.onDeviceReady();
 	</script>
   </body>
 </html>
