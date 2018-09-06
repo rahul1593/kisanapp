@@ -1,7 +1,6 @@
 var app = {
     // Application Constructor
     initialize: function() {
-	alert('Yo');
         this.bindEvents();
     },
     // Bind Event Listeners
@@ -9,13 +8,14 @@ var app = {
     // Bind any events that are required on startup. Common events are:
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
-        document.addEventListener('deviceready', app.onDeviceReady, false);
+        document.addEventListener('deviceready', this.onDeviceReady, false);
+	console.log('Event registered');
     },
     // deviceready Event Handler
     //
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
-    onDeviceReady: function() {
+    onDeviceReady: function() {console.log('Not yet called');
 		pictureSource=navigator.camera.PictureSourceType;
 		destinationType=navigator.camera.DestinationType;
 		//lock app orientation
