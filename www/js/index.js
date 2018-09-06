@@ -1,6 +1,6 @@
 var app = {
     // Application Constructor
-    initialize: function() {alert('Yo');
+    initialize: function() {
         this.bindEvents();
     },
     // Bind Event Listeners
@@ -9,13 +9,12 @@ var app = {
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
-	alert('Event registered');
     },
     // deviceready Event Handler
     //
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
-    onDeviceReady: function() {alert('Not yet called');
+    onDeviceReady: function() {
 		pictureSource=navigator.camera.PictureSourceType;
 		destinationType=navigator.camera.DestinationType;
 		//lock app orientation
@@ -357,5 +356,9 @@ function stop_processing(){
 	document.getElementById('loading').style.display = 'none';
 }
 
+platform.ready().then(() => {
+      this.start();
+    });
+    this.events.subscribe("DevAPP:Force_DeviceReady", _ => this.start());
 
 
