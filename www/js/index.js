@@ -25,18 +25,18 @@ var app = {
 		//app.system.services.__data.timerObj = setInterval(app.system.services.__exec, app.system.services.__data.frequency);
 		//if the key file 'local.key' exists in the file system with valid uid, Show home page
 		//else show registration page
-		if(!verify_registration())
-			init_registration();
-		document.addEventListener("backbutton", onBackKey, false);
-		document.getElementById('report_div').src = app.session.data.report_url;
+		//if(!verify_registration())
+		//	init_registration();
+		//document.addEventListener("backbutton", onBackKey, false);
+		//document.getElementById('report_div').src = app.session.data.report_url;
 		//init weather grid
-		document.getElementById('monthly_weather_report').innerHTML = get_weather_grid();
+		//document.getElementById('monthly_weather_report').innerHTML = get_weather_grid();
 		//init user account details
-		app.session.load_user_info();
+		//app.session.load_user_info();
 		// init tools
-		init_tools();
+		//init_tools();
 		//init chemicals
-		init_chemicals();
+		//init_chemicals();
     },
 	
 	device:{
