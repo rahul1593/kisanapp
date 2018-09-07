@@ -23,6 +23,20 @@ function init_ui(){
 			acc: document.getElementById('account_page'),
 			active: null};
 	//prepare elements for events
+	document.getElementById('home_icon').addEventListener('click', function(){home_not_back(); app.session.set_page_active(null);}, false);
+	//nav links
+    document.getElementById('nvl_mkt').addEventListener('click', set_mkt_active, false);
+    document.getElementById('nvl_fmg').addEventListener('click', set_fmg_active, false);
+    document.getElementById('nvl_wrt').addEventListener('click', set_wrt_active, false);
+    document.getElementById('nvl_dis').addEventListener('click', set_dis_active, false);
+    document.getElementById('nvl_chm').addEventListener('click', set_chm_active, false);
+    document.getElementById('nvl_tls').addEventListener('click', set_tls_active, false);
+    document.getElementById('nvl_rpt').addEventListener('click', set_rpt_active, false);
+    document.getElementById('nvl_acc').addEventListener('click', set_acc_active, false);
+    // others
+    document.getElementById('ch_select_type').addEventListener('change', init_chemicals, false);
+
+    //buttons
 	document.getElementById('market_btn').parentElement.addEventListener('click', with_delay(set_mkt_active, 200), false );
 	document.getElementById('agri_tips_btn').parentElement.addEventListener('click',  with_delay(set_fmg_active, 200), false );
 	document.getElementById('weather_short_button').addEventListener('click', with_delay(set_wtr_active, 200), false );
