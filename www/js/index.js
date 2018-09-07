@@ -19,8 +19,15 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-		pictureSource=navigator.camera.PictureSourceType;
-		destinationType=navigator.camera.DestinationType;
+        	try{
+            		app.pictureSource=Camera.PictureSourceType;
+            		app.destinationType=Camera.DestinationType;
+            	alert('Camera Set');
+		} catch(e){
+		    alert(e.stack);
+		}
+		//pictureSource=navigator.camera.PictureSourceType;
+		//=navigator.camera.DestinationType;
 		//lock app orientation
 		//screen.orientation.lock('portrait');
 		//initialise the ui and event handlers
@@ -91,7 +98,7 @@ var app = {
 				function(message){
 					alert('Failed because: ' + message);
 				}, 
-				{ quality: 30, allowEdit: true, destinationType: destinationType.DATA_URL }
+				{ quality: 30, allowEdit: true, destinationType: app.destinationType.DATA_URL }
 			);
 		},
 		get_gallery_image: function(source){
