@@ -3,27 +3,28 @@ var app = {
     initialize: function() {
         this.bindEvents();
     },
+    pictureSource: null,
+    destinationType: null,
     // Bind Event Listeners
     //
     // Bind any events that are required on startup. Common events are:
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
+        document.addEventListener('deviceready', app.onDeviceReady, false);
     },
     // deviceready Event Handler
     //
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-        	try{
-            		app.pictureSource=Camera.PictureSourceType;
-            		app.destinationType=Camera.DestinationType;
-            	alert('Camera Set');
+        alert(JSON.stringify(navigator, null, 4));
+        try{
+            app.pictureSource=Camera.PictureSourceType;
+            app.destinationType=Camera.DestinationType;
+            alert('Camera Set');
 		} catch(e){
 		    alert(e.stack);
 		}
-		//pictureSource=navigator.camera.PictureSourceType;
-		//=navigator.camera.DestinationType;
 		//lock app orientation
 		//screen.orientation.lock('portrait');
 		//initialise the ui and event handlers
@@ -94,7 +95,7 @@ var app = {
 				function(message){
 					alert('Failed because: ' + message);
 				}, 
-				{ quality: 30, allowEdit: true, destinationType: app.destinationType.DATA_URL }
+				{ quality: 30, allowEdit: true, destinationType: app.destinationType.FILE_URI, sourceType:app.pictureSource.Camera }
 			);
 		},
 		get_gallery_image: function(source){
@@ -105,7 +106,7 @@ var app = {
 				function(message){
 					alert('Failed because: ' + message);
 				}, 
-				{ quality: 50, destinationType: destinationType.FILE_URI, sourceType: source }
+				{ quality: 50, destinationType: app.destinationType.FILE_URI, sourceType: source }
 			);
 		},
 		create_dir: function(path, dir_name){// create a directory in file system
@@ -334,6 +335,7 @@ var app = {
 	}
 };
 
+app.initialize();
 
 function startWorker(cmd, js_file_path, data, callback){
     var myWorker = new Worker(js_file_path);
@@ -362,7 +364,6 @@ function start_processing(){
 function stop_processing(){
 	document.getElementById('loading').style.display = 'none';
 }
-
 
 
 
