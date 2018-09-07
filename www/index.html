@@ -2,25 +2,22 @@
 <html>
   <head>
     <title>Kisan Agriculture</title>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
-	  
+	
     <link rel="stylesheet" type="text/css" href="css/index.css">
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+
     <script type="text/javascript" charset="utf-8" src="js/jquery-2.2.4.js"></script>
     <script type="text/javascript" charset="utf-8" src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" charset="utf-8" src="js/db.js"></script>
-    <script type="text/javascript" charset="utf-8" src="js/session.js"></script>
-    <script type="text/javascript" charset="utf-8" src="js/index.js"></script>
   </head>
   <body>
 	<nav id="header" class="navbar bg-dark navbar-dark py-0 mr-0 px-1">
 		<button id="menu_sidebar_btn" class="navbar-toggler px-1 mr-0" type="button" data-toggle="collapse" data-target="#sidebar">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-		<img id="home_icon" class="btn btn-dark ml-0 px-0" src="img/home.png" style="position:relative;left:-25pt;height:45px;width:35px" onclick="home_not_back(); app.session.set_page_active(null);"/>
+		<img id="home_icon" class="btn btn-dark ml-0 px-0" src="img/home.png" style="position:relative;left:-25pt;height:45px;width:35px"/>
 		<span class="pt-0 large-font px-0 ml-0" style="color:white;font-size:14pt">Kisan Agriculture</span>
 		<a class="navbar-brand py-1 px-0 mr-0" href="#" data-toggle="modal" data-target="#about_app">
 			<img id="app_icon" src="img/icon.png" alt="Logo" style="height:26pt;">
@@ -28,15 +25,15 @@
 		<!-- Navbar links -->
 		<div class="collapse navbar-collapse py-0" id="sidebar">
 			<ul class="navbar-nav py-0" >
-			  <li class="nav-item"><a class="nav-link" href="#" onclick="set_mkt_active();">Market</a></li>
-			  <li class="nav-item"><a class="nav-link" href="#" onclick="set_fmg_active();">Farming Tips</a></li>
-			  <li class="nav-item"><a class="nav-link" href="#" onclick="set_wtr_active();">Weather</a></li>
-			  <li class="nav-item"><a class="nav-link" href="#" onclick="set_dis_active();">Plant Diseases</a></li>
-			  <li class="nav-item"><a class="nav-link" href="#" onclick="set_chm_active();">Chemicals</a></li>
-			  <li class="nav-item"><a class="nav-link" href="#" onclick="set_tls_active();">Farming Tools</a></li>
-			  <li class="nav-item"><a class="nav-link" href="#" onclick="set_rpt_active();">Reports</a></li>
+			  <li class="nav-item"><a id="nvl_mkt" class="nav-link" href="#">Market</a></li>
+			  <li class="nav-item"><a id="nvl_fmg" class="nav-link" href="#">Farming Tips</a></li>
+			  <li class="nav-item"><a id="nvl_wtr" class="nav-link" href="#">Weather</a></li>
+			  <li class="nav-item"><a id="nvl_dis" class="nav-link" href="#">Plant Diseases</a></li>
+			  <li class="nav-item"><a id="nvl_chm" class="nav-link" href="#">Chemicals</a></li>
+			  <li class="nav-item"><a id="nvl_tls" class="nav-link" href="#">Farming Tools</a></li>
+			  <li class="nav-item"><a id="nvl_rpt" class="nav-link" href="#">Reports</a></li>
 			  <li class="nav-item border border-top-2"></li>
-			  <li class="nav-item"><a class="nav-link" href="#" onclick="set_acc_active();">Account</a></li>
+			  <li class="nav-item"><a id="nvl_acc" class="nav-link" href="#">Account</a></li>
 			  <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#report_issue">Report Issue</a></li>
 			  <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#about_app">About Kisan App</a></li>
 			</ul>
@@ -195,8 +192,8 @@
 						<tr><td>Weather</td><td>&nbsp;:&nbsp;</td><td id="w_name">Rainy, light rain</td></tr>
 						<tr><td>Temperature</td><td>&nbsp;:&nbsp;</td><td id="w_temp">297.983 F</td></tr>
 						<tr><td>Pressure</td><td>&nbsp;:&nbsp;</td><td id="w_press">940.39 Bars</td></tr>
-						<tr><td>Humidity</td><td>&nbsp;:&nbsp;</td><td id="w_press">88</td></tr>
-						<tr><td>Wind</td><td>&nbsp;:&nbsp;</td><td id="w_press">4.67 knots</td></tr>
+						<tr><td>Humidity</td><td>&nbsp;:&nbsp;</td><td id="w_humd">88</td></tr>
+						<tr><td>Wind</td><td>&nbsp;:&nbsp;</td><td id="w_wind">4.67 knots</td></tr>
 					</table>
 					<img style="position:absolute;right:25px;top:25px;width:70px;height:auto;background-color:transparent"
 						id="w_icon" src="img/w_rain.png"/>
@@ -366,7 +363,7 @@
 				<!-- Show the chemicals and their usage for crops -->
 				<div class="input-group mt-3 py-1">
 					<label for="ch_select_type" class="py-1">Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label>
-					<select class="form-control" id="ch_select_type" style="margin-left:5px" onchange="init_chemicals();">
+					<select class="form-control" id="ch_select_type" style="margin-left:5px">
 						<option selected>Fertilizer</option>
 						<option>Pesticide</option>
 						<option>Manure</option>
@@ -411,7 +408,7 @@
 						<!-- Modal body -->
 						<div class="modal-body">
 							<div class="form-group">
-							  <label for="comment">Please describe the problem:</label>
+							  <label for="report_issue_desc">Please describe the problem:</label>
 							  <textarea class="form-control" rows="5" id="report_issue_desc"></textarea>
 							</div>
 						</div>
@@ -464,9 +461,13 @@
 	<footer id="footer" class="font-small bg-dark text-center pt-1">
 		<span style="color:white;">Infosys Ltd.</span>
 	</footer>
-	<script type="text/javascript">
+	<!--<script type="text/javascript">
 		app.initialize();
 		//app.onDeviceReady();
-	</script>
+	</script>-->
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/db.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/session.js"></script>
+	<script type="text/javascript" charset="utf-8" src="js/index.js"></script>
   </body>
 </html>
